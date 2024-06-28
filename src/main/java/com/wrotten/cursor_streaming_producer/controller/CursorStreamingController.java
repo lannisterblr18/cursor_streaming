@@ -1,15 +1,15 @@
 package com.wrotten.cursor_streaming_producer.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.wrotten.cursor_streaming_producer.model.CursorPositionModel;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/cursor")
+@RestController
+@RequestMapping("/cursor")
 public class CursorStreamingController {
 
     @PostMapping("/stream")
-    public void stream(){
-
+    public void stream(@RequestBody CursorPositionModel cursorPosition){
+        System.out.println(cursorPosition.getXPosition());
+        System.out.println(cursorPosition.getYPosition());
     }
 }
