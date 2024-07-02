@@ -1,15 +1,18 @@
 console.log("Hello world");
+const stompClient = new StompJs.Client({
+    brokerURL: 'ws://localhost:8080/ws'
+});
+stompClient.activate();
+
+
 const myFunction = (event) => {
     console.log("Came here");
     console.log(event)
-    fetch("http://localhost:8080/cursor/stream", {
-        method: "POST",
+    stompClient.publish({
+        destination: "/app/stream-test",
         body: JSON.stringify({
-            xPosition: event.screenX,
-            yPosition: event.screenY
-        }),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        }
+            xPosition: event.offsetX,
+            yPosition: event.offsetY
+        })
     });
 }
