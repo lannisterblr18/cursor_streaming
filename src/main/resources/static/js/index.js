@@ -8,7 +8,6 @@ $(document).ready(function() {
     const limit = 10;
     $("#rectangle").mousemove(function (event) {
         console.log("Came here");
-        console.log(event)
         if (count >= limit) {
             stompClient.publish({
                 destination: "/app/stream-test",
