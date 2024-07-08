@@ -9,4 +9,5 @@ public class CursorPositionModel {
 
     private int xPosition;
     private int yPosition;
+    private String action;
 }

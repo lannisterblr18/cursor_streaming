@@ -16,7 +16,8 @@ public class CursorStreamingService {
     public void sendMessageToStream(CursorPositionModel cursorPositionModel) {
         Map<String, String> messageBody = new HashMap<>();
         messageBody.put( "xPosition", String.valueOf(cursorPositionModel.getXPosition()));
-        messageBody.put( "yPosition", String.valueOf(cursorPositionModel.getYPosition()) );
+        messageBody.put( "yPosition", String.valueOf(cursorPositionModel.getYPosition()));
+        messageBody.put("action", cursorPositionModel.getAction());
         redisMessagePublisher.publishToStream("cursorPositions", messageBody);
     }
 }
